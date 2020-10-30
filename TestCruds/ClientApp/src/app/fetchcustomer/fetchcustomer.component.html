@@ -1,0 +1,323 @@
+<!--<h1>Customer Data </h1>-->
+<!--<p>This component demonstrates fetching Customer data from the server.</p>
+
+<p *ngIf="!empList"><em>Loading...</em></p>-->
+<!--<p>
+  <a [routerLink]="['/register-employee']">Create New</a>
+</p>-->
+<!--<div class="col-sm-12">
+  <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+</div>
+
+<br />-->
+<!--<div class="col-lg-12 table-responsive" #TABLE #table>
+
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+      </div>
+    </div>
+  </div>
+
+  <table class='table' *ngIf="custList">
+    <thead>
+      <tr>
+        <th>Customer ID</th>
+        <th>Customer No</th>
+        <th>Customer Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cust of custList">
+        <td>{{ cust.customerId }}</td>
+        <td>{{ cust.customerNo }}</td>
+        <td>{{ cust.customerName }}</td>
+        <td>
+          <a [routerLink]="['/customer/edit/', cust.customerId]">Edit</a> |
+          <a [routerLink]="" (click)="delete(cust.customerId)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>-->
+<!--<div class="col-lg-12 table-responsive" #TABLE #table>
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+      </div>
+    </div>
+  </div>
+
+  <p-table #dt class="dataTable" [value]="custList" [rows]="5" [paginator]="custList?.length > 5" [globalFilterFields]="['customerName']">
+    <ng-template pTemplate="header">
+      <tr>
+        <th [pSortableColumn]="'customerId'">Customer ID<p-sortIcon [field]="'customerId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'customerNo'">CustomerNumber<p-sortIcon [field]="'customerNo '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'customerName'">CustomerName<p-sortIcon [field]="'customerName '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="''">Actions</th>
+</ng-template>
+    <ng-template pTemplate="body" let-custList>
+      <tr>
+        <td>{{ custList.customerId}}</td>
+        <td>{{ custList.customerNo }}</td>
+        <td>{{ custList.customerName }}</td>
+        <td>
+          <a [routerLink]="['/customer/edit/', custList.customerId]">Edit</a> |
+          <a [routerLink]="" (click)="delete(custList.customerId)">Delete</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>-->
+<p-toast></p-toast>
+<!--<div class="col-lg-12 table-responsive" #TABLE #table>
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-success float-right" [routerLink]="['/register-employee']" style="margin-right: 411px;">  <i class=" fa fa-plus"></i> Create New </button>
+      </div>
+      <div class="col-sm-6">
+        <button (click)="ExportTOExcel()" class="btn btn-success" style="margin-left: -341px;">ExportTOExcel</button>
+      </div>
+
+    </div>
+  </div>-->
+<!--<p-table #dt class="dataTable" [value]="custList" [rows]="5" [paginator]="custList?.length > 5" [globalFilterFields]="['customerName']">
+
+    <ng-template pTemplate="caption">
+      <div class="main">
+        <div class="form-group has-search">
+          <input pInputText type="text" class="form-control" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search ..." />
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th [pSortableColumn]="'customerNo'">Customer Number<p-sortIcon [field]="'customerNo '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'customerName'">Customer Name<p-sortIcon [field]="'customerName '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="''">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-custList>
+      <tr>
+
+        <td>{{ custList.customerNo }}</td>
+        <td>{{ custList.customerName }}</td>
+        <td>
+
+          <button type="button" class="btn btn-success" [routerLink]="['/customer/edit/', custList.customerId]" style="padding-right: 30px;"> Edit </button>
+
+
+          <button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(custList.customerId);showError()"> Delete </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>-->
+<!--<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">DataTable with default features</h3>
+  </div>
+
+  <div class="card-body">
+    <p-table #dt class="dataTable" [value]="custList" [rows]="5" [paginator]="custList?.length > 5" [globalFilterFields]="['customerName']">
+
+      <ng-template pTemplate="caption">
+        <div class="main">
+          <div class="form-group has-search">
+            <input pInputText type="text" class="form-control" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search ..." />
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th [pSortableColumn]="'customerNo'">Customer Number<p-sortIcon [field]="'customerNo '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+          <th [pSortableColumn]="'customerName'">Customer Name<p-sortIcon [field]="'customerName '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+          <th [pSortableColumn]="''">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-custList>
+        <tr>
+          <td>{{ custList.customerNo }}</td>
+          <td>{{ custList.customerName }}</td>
+          <td>
+
+
+            <button type="button" class="btn btn-success" [routerLink]="['/customer/edit/', custList.customerId]" style="padding-right: 30px;"> Edit </button>
+            &nbsp;
+
+
+            <button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(custList.customerId);showError()"> Delete </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+</div>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>DataTables</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">DataTables</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>150</h3>
+
+                  <p>New Orders</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                  <p>Bounce Rate</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>44</h3>
+
+                  <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>65</h3>
+
+                  <p>Unique Visitors</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">DataTable with default features</h3>
+                </div>
+                <div class="card-body">
+                  <p-table #dt class="dataTable" [value]="custList" [rows]="5" [paginator]="custList?.length > 5" [globalFilterFields]="['customerName']">
+
+                    <ng-template pTemplate="caption">
+                      <div class="main">
+                        <div class="form-group has-search">
+                          <input pInputText type="text" class="form-control" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search ..." />
+                        </div>
+                      </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <!--<th [pSortableColumn]="'customerId'">Customer ID<p-sortIcon [field]="'customerId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>-->
+                        <th [pSortableColumn]="'customerNo'">Customer Number<p-sortIcon [field]="'customerNo '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+                        <th [pSortableColumn]="'customerName'">Customer Name<p-sortIcon [field]="'customerName '" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+                        <th [pSortableColumn]="''">Actions</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-custList>
+                      <tr>
+                        <!--<td>{{ custList.customerId}}</td>-->
+                        <td>{{ custList.customerNo }}</td>
+                        <td>{{ custList.customerName }}</td>
+                        <td>
+
+
+                          <!--<a [routerLink]="['/customer/edit/', custList.customerId]">Edit</a> |-->
+                          <!--<button class="btn"><i class="fa fa-trash"></i></button>-->
+                          <button type="button" class="btn btn-success" [routerLink]="['/customer/edit/', custList.customerId]" style="padding-right: 30px;"> Edit </button>
+                          <!--<a [routerLink]="" (click)="delete(custList.customerId)">Delete</a>    (click)="delete(custList.customerId)"-->
+                          &nbsp;
+                          <!--<button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(custList.customerId)"> <i class="fa fa-trash"></i>  </button>-->
+
+
+                          <button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(custList.customerId);showError()"> Delete </button>
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+          <b>Version</b> 3.0.5
+        </div>
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+        reserved.
+      </footer>
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+
+</body>
+</html>

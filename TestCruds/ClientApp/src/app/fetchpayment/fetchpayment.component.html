@@ -1,0 +1,144 @@
+<h1>Payment Data </h1>
+
+<!--<p>This component demonstrates fetching Customer data from the server.</p>
+
+<p *ngIf="!empList"><em>Loading...</em></p>-->
+
+<!--<p>
+  <a [routerLink]="['/register-payment']">Create New</a>
+</p>-->
+
+
+<!--<div class="col-lg-12 table-responsive" #TABLE #table>
+
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <table class='table' *ngIf="payList">
+    <thead>
+      <tr>
+        <th>Payment ID</th>
+        <th>Payment No</th>
+        <th>Invoice No</th>
+        <th>Payment Date</th>
+        <th>Payment Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pay of payList">
+        <td>{{ pay.paymentId }}</td>
+        <td>{{ pay.paymentNo }}</td>
+        <td>{{pay.invoiceId }}</td>
+        <td>{{pay.paymentDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{pay.paymentAmount}}</td>
+     
+          <td>
+            <a [routerLink]="['/payment/edit/', pay.paymentId]">Edit</a> |
+            <a [routerLink]="" (click)="delete(pay.paymentId)">Delete</a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>-->
+
+<!--<div class="col-lg-12 table-responsive" #TABLE #table>
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+      </div>
+    </div>
+  </div>
+
+  <p-table #dt class="dataTable" [value]="payList" [rows]="10" [paginator]="payList?.length > 5" [globalFilterFields]="['customerId']" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th [pSortableColumn]="'paymentId'">Payment ID<p-sortIcon [field]="'paymentId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'paymentNo'">Payment No<p-sortIcon [field]="'paymentNo'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'invoiceId'">Invoice No<p-sortIcon [field]="'invoiceId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'paymentDate'">Payment Date<p-sortIcon [field]="'paymentDate'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'paymentAmount'">Payment Amount<p-sortIcon [field]="'paymentAmount'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="''">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-payList>
+      <tr>
+        <td>{{ payList.paymentId}}</td>
+        <td>{{ payList.paymentNo}}</td>
+        <td>{{ payList.invoiceId}}</td>
+        <td>{{ payList.paymentDate | date:'dd-MM-yyyy' }}</td>
+        <td>{{ payList.paymentAmount }}</td>
+
+
+      
+        <td>
+          <a [routerLink]="['/payment/edit/', payList.paymentId]">Edit</a> |
+          <a [routerLink]="" (click)="delete(payList.paymentId)">Delete</a>
+        </td>
+   
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>-->
+<p-toast></p-toast>
+<p-toast></p-toast>
+<div class="col-lg-12 table-responsive" #TABLE #table>
+  <div style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-success float-right" [routerLink]="['/register-payment']" style="margin-right: 411px;">  <i class=" fa fa-plus"></i> Create New </button>
+      </div>
+
+
+
+      <div class="col-sm-6">
+        <!--<button type="button" class="btn btn-success float-right" [routerLink]="['/register-payment']">  <i class=" fa fa-plus"></i> Create New </button>-->
+        <button (click)="ExportTOExcel()" class="btn btn-success" style="margin-left: -341px;">ExportTOExcel</button>
+      </div>
+
+    </div>
+  </div>
+
+  <p-table #dt class="dataTable" [value]="payList" [rows]="10" [paginator]="payList?.length > 5" [globalFilterFields]="['customerId']">
+    <ng-template pTemplate="caption">
+      <div class="main">
+        <div class="form-group has-search">
+          <input pInputText type="text" class="form-control" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search ..." />
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <!--<th [pSortableColumn]="'paymentId'">Payment ID<p-sortIcon [field]="'paymentId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>-->
+        <th [pSortableColumn]="'paymentNo'">Payment No<p-sortIcon [field]="'paymentNo'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'invoiceId'">Invoice No<p-sortIcon [field]="'invoiceId'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'paymentDate'">Payment Date<p-sortIcon [field]="'paymentDate'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="'paymentAmount'">Payment Amount<p-sortIcon [field]="'paymentAmount'" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon></th>
+        <th [pSortableColumn]="''">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-payList>
+      <tr>
+        <!--<td>{{ payList.paymentId}}</td>-->
+        <td>{{ payList.paymentNo}}</td>
+        <td>{{ payList.invoiceId}}</td>
+        <td>{{ payList.paymentDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ payList.paymentAmount }}</td>
+        <td>
+          <button type="button" class="btn btn-success" [routerLink]="['/payment/edit/', payList.paymentId]" style="padding-right: 25px;"> Edit </button>
+          &nbsp;
+          <button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(payList.paymentId)"> Delete </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>

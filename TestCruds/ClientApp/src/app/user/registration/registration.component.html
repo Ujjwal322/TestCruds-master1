@@ -1,0 +1,64 @@
+
+<form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+  <div class="form-group required">
+    <label>Username</label>
+    <!--<input class="form-control" formControlName="UserName">-->
+    <input class="form-control" type="text" formControlName="UserName" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }">
+    <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">
+      This
+      field is mandatory.
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <!--<input class="form-control" formControlName="Email">-->
+    <input class="form-control" type="text" formControlName="Email" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+    <div class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.required">
+
+      <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">
+        Invalid email address.
+      </label>
+      <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.required">
+        Email must be valid email address
+      </label>
+      </div>
+  </div>
+  <div class="form-group">
+    <label>Full Name</label>
+    <!--<input class="form-control" formControlName="FullName">-->
+    <input class="form-control" type="text" formControlName="FullName" [ngClass]="{ 'is-invalid': submitted && f.FullName.errors }">
+  </div>
+  <!--<div formGroupName="Passwords">-->
+    <div class="form-group required">
+      <label>Password</label>
+      <!--<input type="password" class="form-control" formControlName="PasswordHash">-->
+      <input class="form-control" type="password" formControlName="PasswordHash" [ngClass]="{ 'is-invalid': submitted && f.PasswordHash.errors }">
+      <label class="text-danger" *ngIf="service.formModel.get('PasswordHash').touched && service.formModel.get('PasswordHash').errors?.required">
+        This
+        field is mandatory.
+      </label>
+      <label class="text-danger" *ngIf="service.formModel.get('PasswordHash').touched && service.formModel.get('PasswordHash').errors?.minlength">
+        Minimum
+        4 characters required.
+      </label>
+    </div>
+    <!--<div class="form-group required">
+      <label>Confirm Password</label>
+      
+      <input class="form-control" type="password" formControlName="ConfirmPassword" [ngClass]="{ 'is-invalid': submitted && f.ConfirmPassword.errors }">
+      <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">
+        This
+        field is mandatory.
+      </label>
+      <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
+        Confirm
+        Password does not match.
+      </label>
+    </div>-->
+  <!--</div>-->
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign Up</button>
+    </div>
+  </div>
+</form>
