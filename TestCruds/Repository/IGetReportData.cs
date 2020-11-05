@@ -9,5 +9,7 @@ namespace TestCruds.Repository
     public interface IGetReportData
     {
         List<Models.Invoice> GetInvoices();
+
+       List<Dashboard> GetDashboards();
     }
 }

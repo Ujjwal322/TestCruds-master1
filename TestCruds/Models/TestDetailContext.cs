@@ -15,7 +15,6 @@ namespace TestCruds.Models
         {
         }
 
-        public  DbSet<Login> Login { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
@@ -120,6 +119,10 @@ namespace TestCruds.Models
 
                 entity.Property(e => e.LockoutEndDateUtc).HasColumnType("datetime");
 
+                entity.Property(e => e.PasswordHash)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Token)
                     .HasMaxLength(500)
                     .IsUnicode(false);
@@ -133,6 +136,12 @@ namespace TestCruds.Models
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.CustomerName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -140,6 +149,12 @@ namespace TestCruds.Models
                 entity.Property(e => e.CustomerNo)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ModifyBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<InvoiceTbl>(entity =>
@@ -147,6 +162,12 @@ namespace TestCruds.Models
                 entity.HasKey(e => e.InvoiceId);
 
                 entity.Property(e => e.InvoiceId).HasColumnName("InvoiceID");
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
@@ -159,6 +180,12 @@ namespace TestCruds.Models
                 entity.Property(e => e.InvoiceNo)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ModifyBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PaymentDueDate).HasColumnType("date");
             });
@@ -182,7 +209,19 @@ namespace TestCruds.Models
 
                 entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
 
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.InvoiceId).HasColumnName("InvoiceID");
+
+                entity.Property(e => e.ModifyBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PaymentAmount)
                     .HasMaxLength(50)

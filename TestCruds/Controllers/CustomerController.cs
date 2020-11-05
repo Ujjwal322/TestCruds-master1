@@ -8,11 +8,14 @@ using System.Data;
 using System.Data.SqlClient;
 using TestCruds.Repository;
 using Microsoft.AspNetCore.Cors;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TestCruds.Controllers
 {
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     //[Route("api/[controller]")]
     //[EnableCors("AllowMyOrigin")]
     public class CustomerController : Controller
@@ -54,9 +57,9 @@ namespace TestCruds.Controllers
 
         [HttpPost]
         [Route("api/Customer/Create")]
-        public int Create([FromBody] CustomerTbl c, string CustomerName)
+        public int Create([FromBody] CustomerTbl c, Customer ct, string Customername, string CustomerNo)
         {
-            return cust.AddCustomer(c,CustomerName);
+            return cust.AddCustomer(c,ct,Customername,CustomerNo);
         }
 
         //public IActionResult Create([FromBody] CustomerTbl c)
@@ -215,6 +218,13 @@ namespace TestCruds.Controllers
             return gr.GetInvoices();
         }
 
+        [HttpGet]
+        [Route("api/Customer/GetDashboardsDetail")]
+
+        public List<Dashboard> GetDashboardsDetail()
+        {
+            return gr.GetDashboards();
+        }
 
     }
 }

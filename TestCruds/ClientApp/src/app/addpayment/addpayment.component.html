@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -21,9 +21,15 @@
         <span class="formFieldRequired">*</span>
       </label>
       <div class="col-md-4">
-        <input class="form-control" type="text" formControlName="paymentNo" [ngClass]="{ 'is-invalid': submitted && f.paymentNo.errors }">
-        <div *ngIf="submitted && f.paymentNo.errors" class="invalid-feedback">
-          <div *ngIf="f.paymentNo.errors.required">Payment No is required</div>
+        <!--<input class="form-control" type="text" formControlName="paymentNo" [ngClass]="{ 'is-invalid': submitted && f.paymentNo.errors }">-->
+        <input type="text" class="form-control" id="paymentNo" name="paymentNo"formControlName="paymentNo"
+               [ngClass]="{'is-invalid':paymentForm.get('paymentNo').touched && paymentForm.get('paymentNo').invalid}">
+        <!--<div *ngIf="submitted && f.paymentNo.errors" class="invalid-feedback">
+    <div *ngIf="f.paymentNo.errors.required">Payment No is required</div>
+  </div>-->
+        <div *ngIf="paymentForm.get('paymentNo').touched && paymentForm.get('paymentNo').invalid" class="invalid-feedback">
+          <div *ngIf="paymentForm.get('paymentNo').errors.required">Payment No is required </div>
+          <div *ngIf="paymentForm.get('paymentNo').errors.pattern">Remove Whitespace </div>
         </div>
       </div>
       <!--<span class="text-danger" *ngIf="customerNo.invalid && formDir.submitted">
@@ -44,13 +50,22 @@
     <div class="form-group row">
       <label class="control-label col-md-12" for="Invoice No">Invoice No</label>
       <div class="col-md-4">
-        <select class="form-control" formControlName="invoiceId">
+        <select class="form-control" formControlName="invoiceId" [ngClass]="{'is-invalid':
+                                                    paymentForm.get('invoiceId').touched && paymentForm.get('invoiceId').invalid}">
+    <option value="">Select Invoiceno</option>
+    <option *ngFor="let invoice of  invoiceList"
+            value={{invoice.invoiceId}}>
+      {{invoice.invoiceNo}}
+    </option>
+  </select>
+        <!--<select class="form-control" formControlName="invoiceId" [ngClass]="{'is-invalid':
+                                                paymentForm.get('invoiceNo').touched && paymentForm.get('invoiceNo').invalid}">
           <option value="">Select Invoiceno</option>
           <option *ngFor="let invoice of  invoiceList"
                   value={{invoice.invoiceId}}>
             {{invoice.invoiceNo}}
           </option>
-        </select>
+        </select>-->
       </div>
       <!--<span class="text-danger" *ngIf="customerName.invalid && formDir.submitted">
         CustomerName is required
@@ -60,7 +75,9 @@
     <div class="form-group row">
       <label class="control-label col-md-12" for="Payment Date">Payment Date</label>
       <div class="col-md-4">
-        <input class="form-control" type="date" [ngModel]="paymentDate | date:'yyyy-MM-dd'" (ngModelChange)="paymentDate = $event" formControlName="paymentDate">
+        <!--<input class="form-control" type="date" [ngModel]="paymentDate | date:'yyyy-MM-dd'" (ngModelChange)="paymentDate = $event" formControlName="paymentDate">-->
+        <input type="date" id="paymentDate"  [ngModel]="paymentDate | date:'yyyy-MM-dd'" name="paymentDate" class="form-control" formControlName="paymentDate" [ngClass]="{'is-invalid':
+                                                 paymentForm.get('paymentDate').touched &&  paymentForm.get('paymentDate').invalid}">
       </div>
       <!--<span class="text-danger" *ngIf="customerName.invalid && formDir.submitted">
         CustomerName is required
@@ -73,9 +90,14 @@
         <span class="formFieldRequired">*</span>
       </label>
       <div class="col-md-4">
-        <input class="form-control" type="text" formControlName="paymentAmount" [ngClass]="{ 'is-invalid': submitted && f.paymentAmount.errors }">
-        <div *ngIf="submitted && f.paymentAmount.errors" class="invalid-feedback">
-          <div *ngIf="f.paymentAmount.errors.required">Payment Amount is required</div>
+        <!--<input class="form-control" type="text" formControlName="paymentAmount" [ngClass]="{ 'is-invalid': submitted && f.paymentAmount.errors }">-->
+        <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" formControlName="paymentAmount" [ngClass]="{'is-invalid':
+                                                 paymentForm.get('paymentAmount').touched &&  paymentForm.get('paymentAmount').invalid}">
+        <!--<div *ngIf="submitted && f.paymentAmount.errors" class="invalid-feedback">
+    <div *ngIf="f.paymentAmount.errors.required">Payment Amount is required</div>
+  </div>-->
+        <div class="invalid-feedback">
+          <div>Input is required </div>
         </div>
       </div>
       <!--<span class="text-danger" *ngIf="customerName.invalid && formDir.submitted">
@@ -84,7 +106,7 @@
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-light" [disabled]="loading">Save</button>
+      <button type="submit" class="btn btn-light" [disabled]="!paymentForm.valid">Save</button>
       &nbsp;
       <button class="btn btn-light" (click)="cancel()">Cancel</button>
     </div>

@@ -1,3 +1,301 @@
-<p>
-  masterpage works!
-</p>
+<!--<div class="wrapper">
+  <div class="content-wrapper">-->
+<!-- Content Header (Page header) -->
+<!-- /.content-header -->
+<!-- Main content -->
+<!--{{Data[0].totalCustomer}}-->
+<!--{{Data.totalSeles}}-->
+<!--{{Data[0].totalPayments}}-->
+<section class="content">
+  <div class="container-fluid" *ngFor="let list of dispname">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <!--<div class="col-lg-4 col-8">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{list.totalCustomer}}</h3>
+
+        <p>Total Customer </p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>-->
+
+      <div class="col-12 col-sm-6 col-md-4" routerLink="/Nav/ListPayment">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{list.totalCustomer}}</h3>
+
+            <p>Total Customer </p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        <div style="width: 50%; float: left;" class=" info-box mb-3">
+          <div class="info-box-content">
+            <span class="info-box-text">
+              <h5><b>This Year</b></h5>
+              <span class="info-box-text">
+                New Customers :
+                <b>{{list.customerYearly}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.customerYearlyGrowth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div style="width: 50%; float: left;" class="info-box mb-3 ">
+          <div class="info-box-content">
+
+            <span class="info-box-text">
+              <h5><b>This Month</b></h5>
+              <span class="info-box-text">
+                New Customers :
+                <b>{{list.customerMonthly}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.customerMonthlyGrowth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4" routerLink="/Nav/ListPayment">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{list.totalSeles}}</h3>
+
+            <p>Total Sales</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        <div style="width: 70%; float: left;" class=" info-box mb-3">
+          <div class="info-box-content">
+            <span class="info-box-text">
+              <h5><b>This Year</b></h5>
+              <span class="info-box-text">
+                Total Sales  :
+                <b>{{list.salesYearly | currency}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.salesYearlyGrowth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div style="width: 70%; float: left;" class="info-box mb-3 ">
+          <div class="info-box-content">
+
+            <span class="info-box-text">
+              <h5><b>This Month</b></h5>
+              <span class="info-box-text">
+                Total Sales  :
+                <b>{{list.salesMonthly | currency}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.salesMonthlyGrowth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4" routerLink="/Nav/ListPayment">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>{{list.totalPayments}}</h3>
+
+            <p>Total Payments</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        <div style="width: 50%; float: left;" class=" info-box mb-3">
+          <div class="info-box-content">
+            <span class="info-box-text">
+              <h5><b>This Year</b></h5>
+              <span class="info-box-text">
+                Total Payment Collection :
+                <b>{{list.paymentCollestionsYearly | currency}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.paymentCollestionsYearlyGrowth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div style="width: 50%; float: left;" class="info-box mb-3 ">
+          <div class="info-box-content">
+
+            <span class="info-box-text">
+              <h5><b>This Month</b></h5>
+              <span class="info-box-text">
+                Totel Payment Collection:
+                <b>{{list.paymentCollestionsMonthly | currency}} </b>
+              </span>
+              <span class="info-box-text">
+                Growth :
+                <b>{{list.paymentCollestionsMonthlyGroth}}<small>%</small></b>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!--<div class="col-lg-4 col-8">
+
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>{{list.totalSeles}}</h3>
+
+        <p>Total Sales</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>-->
+      <!--<div class="col-lg-4 col-8">
+
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>{{list.totalPayments}}</h3>
+
+        <p>Total Payments</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person-add"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>-->
+      <!-- ./col -->
+      <!--<div class="col-lg-3 col-6">
+
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>65</h3>
+
+        <p>Unique Visitors</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>-->
+      <!--<div class="col-12 col-sm-6 col-md-4" routerLink="/Nav/ListPayment">
+    <div style="width: 50%; float: left;" class=" info-box mb-3">
+      <div class="info-box-content">
+        <span class="info-box-text">
+          <h5><b>This Year</b></h5>
+          <span class="info-box-text">
+            Total Sales  :
+            <b>{{list.salesYearly | currency}} </b>
+          </span>
+          <span class="info-box-text">
+            Growth :
+            <b>{{list.salesYearlyGrowth}}<small>%</small></b>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div style="width: 50%; float: left;" class="info-box mb-3 ">
+      <div class="info-box-content">
+
+        <span class="info-box-text">
+          <h5><b>This Month</b></h5>
+          <span class="info-box-text">
+            Total Sales  :
+            <b>{{list.salesMonthly | currency}} </b>
+          </span>
+          <span class="info-box-text">
+            Growth :
+            <b>{{list.salesMonthlyGrowth}}<small>%</small></b>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>-->
+      <!--<div class="col-12 col-sm-6 col-md-4" routerLink="/Nav/ListPayment">
+    <div style="width: 50%; float: left;" class=" info-box mb-3">
+      <div class="info-box-content">
+        <span class="info-box-text">
+          <h5><b>This Year</b></h5>
+          <span class="info-box-text">
+            Total Payment Collection :
+            <b>{{list.paymentCollestionsYearly | currency}} </b>
+          </span>
+          <span class="info-box-text">
+            Growth :
+            <b>{{list.paymentCollestionsYearlyGrowth}}<small>%</small></b>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div style="width: 50%; float: left;" class="info-box mb-3 ">
+      <div class="info-box-content">
+
+        <span class="info-box-text">
+          <h5><b>This Month</b></h5>
+          <span class="info-box-text">
+            Totel Payment Collection:
+            <b>{{list.paymentCollestionsMonthly | currency}} </b>
+          </span>
+          <span class="info-box-text">
+            Growth :
+            <b>{{list.paymentCollestionsMonthlyGroth}}<small>%</small></b>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>-->
+    </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable" style="height: 300px; width: 600px;">
+          <!-- Custom tabs (Charts with tabs)-->
+          <!-- /.card -->
+          <!-- DIRECT CHAT -->
+          <!--/.direct-chat -->
+          <!-- TO DO List -->
+          <!-- /.card -->
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable" style="height: 300px; width: 600px;">
+
+          <!-- Map card -->
+          <!-- /.card -->
+          <!-- solid sales graph -->
+          <!-- /.card -->
+          <!-- Calendar -->
+          <!-- /.card -->
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<!--</div>
+</div>-->

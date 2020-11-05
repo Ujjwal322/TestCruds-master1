@@ -71,9 +71,20 @@ export class createinvoice implements OnInit {
       return;
     }
     if (this.title == "Create Invoice") {
-      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Add Invoice Successfully' })
+      //this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Add Invoice Successfully' })
       this.invoiceservice.saveInvoice(this.invoiceForm.value)
         .subscribe((data) => {
+
+          if (data == 1) {
+            this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Add Invoice Successfully' })
+          }
+          else if (data == -1) {
+            this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Duplicate Invoice No' })
+          }
+          else {
+            this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'this is time pass code' })
+          }
+
           this.router.navigate(['/fetch-invoice']);
         }, error => this.errorMessage = error)
     }

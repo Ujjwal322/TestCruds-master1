@@ -8,6 +8,131 @@ namespace TestCruds.Repository
 {
     public class Getreportdata : IGetReportData
     {
+        public List<Dashboard> GetDashboards()
+        {
+            List<Dashboard> DashbordList = new List<Dashboard>();
+
+            try
+            {
+                using (var db = new TestDetailContext())
+                {
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.TotalCustomer = db.CustomerTbl.Count();
+                    dashboard.TotalInvoices = db.InvoiceTbl.Count();
+                    dashboard.TotalPayments = db.PaymentTbl.Count();
+
+
+                    DateTime time = DateTime.Today;
+
+                    var Month = (time.Month);
+                    var Year = (time.Year);
+
+
+                    //foreach (var inv in db.InvoiceTbl.ToList())
+                    //{
+                    //    dashboard.TotalSeles += Convert.ToInt32(inv.InvoiceAmount);
+                    //}
+
+
+                    //foreach (var Pay in db.PaymentTbl.ToList())
+                    //{
+                    //    dashboard.TotalPaymentCollestions += Convert.ToInt32(Pay.PaymentAmount);
+                    //}
+                    foreach (var ct in db.CustomerTbl.ToList())
+                    {
+                        if (ct.CreatedDate != null)
+                        {
+                            if (ct.CreatedDate.Year == Year)
+                            {
+                                dashboard.CustomerYearly += 1;
+
+                                if (ct.CreatedDate.Month == Month)
+                                {
+                                    dashboard.CustomerMonthly += 1;
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (var inv in db.InvoiceTbl.ToList())
+                    {
+                        if (inv.InvoiceDate.Year == Year)
+                        {
+                            dashboard.SalesYearly += Convert.ToInt32(inv.InvoiceAmount);
+                            dashboard.InvoiceYearly += 1;
+                            if (inv.InvoiceDate.Month == Month)
+                            {
+                                dashboard.SalesMonthly += Convert.ToInt32(inv.InvoiceAmount);
+                                dashboard.InvoiceMonthly += 1;
+                            }
+                        }
+                        dashboard.TotalSeles += Convert.ToInt32(inv.InvoiceAmount);
+                    }
+
+                    foreach (var Pay in db.PaymentTbl.ToList())
+                    {
+                        if (Pay.PaymentDate.Year == Year)
+                        {
+                            dashboard.PaymentCollestionsYearly += Convert.ToInt32(Pay.PaymentAmount);
+                            dashboard.PaymentsYearly += 1;
+                            if (Pay.PaymentDate.Month == Month)
+                            {
+                                dashboard.PaymentCollestionsMonthly += Convert.ToInt32(Pay.PaymentAmount);
+                                dashboard.PaymentsMonthly += 1;
+                            }
+                        }
+
+                        dashboard.TotalPaymentCollestions += Convert.ToInt32(Pay.PaymentAmount);
+                    }
+                    if ((dashboard.TotalCustomer - dashboard.CustomerMonthly) != 0)
+                    {
+                        dashboard.CustomerMonthlyGrowth = (dashboard.CustomerMonthly / (dashboard.TotalCustomer - dashboard.CustomerMonthly)) * 100;
+                    }
+                    else { dashboard.CustomerMonthlyGrowth = 100; }
+
+                    if ((dashboard.TotalCustomer - dashboard.CustomerYearly) != 0)
+                    {
+                        dashboard.CustomerYearlyGrowth = (dashboard.CustomerYearly / (dashboard.TotalCustomer - dashboard.CustomerYearly)) * 100;
+                    }
+                    else { dashboard.CustomerYearlyGrowth = 100; }
+
+                    if ((dashboard.TotalSeles - dashboard.SalesMonthly) != 0)
+                    {
+                        dashboard.SalesMonthlyGrowth = Convert.ToInt32((dashboard.SalesMonthly / (dashboard.TotalSeles - dashboard.SalesMonthly)) * 100);
+                    }
+                    else { dashboard.SalesMonthlyGrowth = 100; }
+
+                    if ((dashboard.TotalSeles - dashboard.SalesYearly) != 0)
+                    {
+                        dashboard.SalesYearlyGrowth = Convert.ToInt32((dashboard.SalesYearly / (dashboard.TotalSeles - dashboard.SalesYearly)) * 100);
+                    }
+                    else { dashboard.SalesYearlyGrowth = 100; }
+
+                    if ((dashboard.TotalPaymentCollestions - dashboard.PaymentCollestionsMonthly) != 0)
+                    {
+                        dashboard.PaymentCollestionsMonthlyGroth = Convert.ToInt32((dashboard.PaymentCollestionsMonthly / (dashboard.TotalPaymentCollestions - dashboard.PaymentCollestionsMonthly)) * 100);
+                    }
+                    else { dashboard.PaymentCollestionsMonthlyGroth = 100; }
+
+                    if ((dashboard.TotalPaymentCollestions - dashboard.PaymentCollestionsYearly) != 0)
+                    {
+                        dashboard.PaymentCollestionsYearlyGrowth = Convert.ToInt32((dashboard.PaymentCollestionsYearly / (dashboard.TotalPaymentCollestions - dashboard.PaymentCollestionsYearly)) * 100);
+                    }
+                    else { dashboard.PaymentCollestionsYearlyGrowth = 100; }
+
+                    DashbordList.Add(dashboard);
+                }
+            
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+            return DashbordList;
+        }
+
         public List<Invoice> GetInvoices()
         {
             List<Invoice> invoices = new List<Invoice>();

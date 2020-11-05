@@ -26,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { DataTablesModule } from 'angular-datatables';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
-import { ToastyModule } from 'ng2-toasty';
+//import { ToastyModule } from 'ng2-toasty';
+//import { ToastrModule } from 'ngx-toastr';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserserviceService } from './services/userservice.service';
@@ -69,7 +70,7 @@ import { APP_BASE_HREF } from '@angular/common';
     TableModule,
     ToastModule,
     PaginatorModule,
-    ToastyModule.forRoot(),
+    //ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -95,7 +96,7 @@ import { APP_BASE_HREF } from '@angular/common';
           { path:'login', component: LoginComponent }
         ]
       },
-      { path: 'home', component: HomeComponent}
+      { path: 'home', component:MasterpageComponent}
     ])
   ],
   providers: [CustomerService, InvoiceService, PaymentService, UserserviceService, MessageService, { provide: APP_BASE_HREF, useValue: '/' }],

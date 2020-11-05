@@ -51,4 +51,8 @@ export class UserserviceService {
   getUserProfile() {
     return this.http.get(this.BaseURI + '/UserProfile');
   }
+
+  getDashboard() {
+    return this.http.get(this.BaseURI + '/Customer/GetDashboardsDetail');
+  }
 }

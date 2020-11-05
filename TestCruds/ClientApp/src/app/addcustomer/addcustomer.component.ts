@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../services/customerservice';
 import { MessageService } from 'primeng/api';
 import { Customer } from '../model/Customer';
-
+//import { ToastrService } from 'ngx-toastr';
 
 @Component({
   templateUrl: './addcustomer.component.html',
@@ -49,7 +49,9 @@ export class createcustomer implements OnInit {
       customerId: 0,
 
       customerNo: new FormControl('', [Validators.required, Validators.pattern(/^\S*$/)]),
-      customerName: new FormControl('', Validators.required)
+      customerName: new FormControl('', Validators.required),
+      //createdBy: '',
+      //modifyBy: ''
     })
   }
 
@@ -78,6 +80,7 @@ export class createcustomer implements OnInit {
         .subscribe((data) => {
           if (data == 1) {
             this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Add Customer Successfully' })
+            //this.toastr.success('Add Customer Successfully');
             }
           else if (data == -1) {
             this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'duplicate customer Name' })

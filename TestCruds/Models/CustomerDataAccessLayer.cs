@@ -80,30 +80,87 @@ namespace TestCruds.Models
             return lstcustomer;
         }
 
-        public int AddCustomer(CustomerTbl cust,string Customername)
+        public int AddCustomer(CustomerTbl cust,Customer ct,string Customername, string CustomerNo)
         {
+            //List<Customer> Items = new List<Customer>();
             int returnVal = 0;
+
+            //try
+            //{
+            //    using (var db = new TestDetailContext())
+            //    {
+            //        Customer get;
+            //        foreach (var it in db.CustomerTbl)
+            //        {
+            //            get = new Customer();
+            //            get.CustomerNo = it.CustomerNo;
+            //            get.CustomerName = it.CustomerName;
+            //            get.CreatedBy = it.CreatedBy;
+            //            get.CreatedDate = it.CreatedDate;
+            //            Items.Add(get);
+            //        }
+            //        CustomerTbl Cust;
+            //        Cust = new CustomerTbl();
+            //        Cust.CustomerNo = cust.CustomerNo;
+            //        Cust.CustomerName = cust.CustomerName;
+            //        Cust.CreatedBy = "abc";
+            //        Cust.CreatedDate = DateTime.Now;
+            //        CustomerNo = Cust.CustomerNo;
+
+            //        Customername = cust.CustomerName;
+            //        bool existingCustomernumber = db.CustomerTbl.Any(x => x.CustomerNo == cust.CustomerNo);
+            //        if (existingCustomernumber == true)
+            //        {
+            //            returnVal = -2;
+            //        }
+
+            //        bool existingCustomer = db.CustomerTbl.Any(x => x.CustomerName == cust.CustomerName);
+            //        if (existingCustomer == true)
+            //        {
+            //            returnVal = -1;
+            //        }
+            //        if (existingCustomer == false && existingCustomernumber == false)
+            //        {
+            //            db.CustomerTbl.Add(Cust);
+            //            returnVal = db.SaveChanges();
+
+
+            //        }
+
+            //        return 1;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw;
+            //}
+
             try
             {
                 Customername = cust.CustomerName;
+                cust.CreatedDate = DateTime.Now;
+                if (cust.CreatedDate != null)
+                {
+                    cust.CreatedBy = "abcd";
+                }
                 bool existingCustomernumber = db.CustomerTbl.Any(x => x.CustomerNo == cust.CustomerNo);
                 if (existingCustomernumber == true)
                 {
                     returnVal = -2;
                 }
-                //CustomerTbl existingCustomer = db.CustomerTbl.Where(ct => ct.CustomerName == ct.CustomerName).FirstOrDefault();
 
                 bool existingCustomer = db.CustomerTbl.Any(x => x.CustomerName == Customername);
-                if(existingCustomer == true)
+                if (existingCustomer == true)
                 {
                     returnVal = -1;
                 }
-                if(existingCustomer == false && existingCustomernumber == false)
+                if (existingCustomer == false && existingCustomernumber == false)
                 {
                     db.CustomerTbl.Add(cust);
                     db.SaveChanges();
                 }
-                
+
                 //return 1;
             }
             catch (Exception ex)
@@ -111,6 +168,10 @@ namespace TestCruds.Models
                 Console.WriteLine(ex.Message);
                 //throw;
             }
+
+
+
+
 
             return returnVal;
         }
@@ -270,6 +331,12 @@ namespace TestCruds.Models
                 }
                 inv.PaymentDueDate = inv.InvoiceDate.AddDays(30);
 
+                inv.CreatedDate = DateTime.Now;
+                if (inv.CreatedDate != null)
+                {
+                    inv.CreatedBy = "abcd";
+                }
+
                 Invoiceno = inv.InvoiceNo;
 
                 bool existingCustomer = db.InvoiceTbl.Any(x => x.InvoiceNo == Invoiceno);
@@ -406,6 +473,12 @@ namespace TestCruds.Models
             try
             {
                 Paymentno = pt.PaymentNo;
+
+                pt.CreatedDate = DateTime.Now;
+                if (pt.CreatedDate != null)
+                {
+                    pt.CreatedBy = "abcd";
+                }
 
                 bool existingCustomer = db.PaymentTbl.Any(x => x.PaymentNo == Paymentno);
                 if (existingCustomer == true)

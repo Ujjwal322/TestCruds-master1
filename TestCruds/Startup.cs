@@ -86,6 +86,8 @@ namespace TestCruds
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+           // app.UseAuthorization();
+
 
             app.UseMvc(routes =>
             {
